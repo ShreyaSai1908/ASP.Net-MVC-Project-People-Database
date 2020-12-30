@@ -1,0 +1,43 @@
+﻿@model CreateLanguageViewModel
+
+@{
+    ViewData["Title"] = "ShowLanguage";
+}
+
+<h1>ShowLanguage</h1>
+
+<p>
+    <a asp-action="CreateLanguage">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.LanguageList) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageName)
+            </td>
+            
+            
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
