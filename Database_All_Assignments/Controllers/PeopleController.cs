@@ -14,9 +14,13 @@ namespace Database_All_Assignments.Controllers
     public class PeopleController : Controller
     {
         private IPeopleServices ps;
-        public PeopleController(IPeopleServices peopleService)
+        private readonly ILanguageService _languageService;
+        private readonly IPersonLanguageService _personLangService;
+        public PeopleController(IPeopleServices peopleService, IPersonLanguageService personLangService, ILanguageService languageService)
         {
             ps = peopleService;
+            _languageService = languageService;
+            _personLangService = personLangService;
         }
 
         private PeopleViewModel peopleViewModel;
@@ -60,7 +64,7 @@ namespace Database_All_Assignments.Controllers
         [HttpPost]
         public IActionResult Add_View_People(PeopleViewModel objModel)
         {
-            CreatePersonViewModel createPersonModelView = new CreatePersonViewModel();
+            CreatePersonViewModel createPersonModelView = new CreatePersonViewModel();            
             if (objModel.AddPerson != null)
             {
                 if (ModelState.IsValid)
@@ -110,7 +114,9 @@ namespace Database_All_Assignments.Controllers
         [HttpGet]
         public IActionResult AddPerson()
         {
-            return PartialView("_AddPerson");
+            CreatePersonViewModel personVM = new CreatePersonViewModel();
+            personVM.LanguageList = _languageService.All();
+            return PartialView("_AddPerson", personVM);
         }
 
         [HttpPost]
@@ -130,6 +136,7 @@ namespace Database_All_Assignments.Controllers
         public IActionResult EditPerson(int id)
         {
             Person editPerson = ps.FindBy(id);
+            editPerson.Languages = _personLangService.FindAllLanguage(id);
 
             /*
             CreatePersonViewModel modelPerson = new CreatePersonViewModel();

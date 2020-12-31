@@ -14,13 +14,15 @@ function GetAddPersonForm(urlToCreateForm)
 function PostAddPersonForm(event, form)
 {
     event.preventDefault();
+    console.log("SelectedValues", $("#ListLanguageID option:selected").val());
 
     $.post(form.action,
         {
             FirstName: form.FirstName.value,
             LastName: form.LastName.value,
             PhoneNumber: form.PhoneNumber.value,
-            Address: form.Address.value
+            Address: form.Address.value,
+            ListLanguageID: $("#ListLanguageID option:selected").val()
         },
         function (data, status)
         {

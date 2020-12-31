@@ -18,7 +18,6 @@ namespace Database_All_Assignments.Models.Database
         public Person Create(string FirstName, string LastName, string PhoneNumber, string Address)
         {
             Person addingPerson = new Person(FirstName, LastName, PhoneNumber, Address);
-
             _peopleDbContext.GetPeopleList.Add(addingPerson);
             _peopleDbContext.SaveChanges();
             return addingPerson;

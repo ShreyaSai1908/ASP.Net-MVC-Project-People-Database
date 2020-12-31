@@ -51,7 +51,17 @@ namespace Database_All_Assignments.Models.Database
 
         public List<Language> ReadAllLanguage(int personID)
         {
-            throw new NotImplementedException();
+            List<Language> allMatchingLanguage = new List<Language>();
+            List<PersonLanguage> allPersonLangList = _peopleDbContext.PersonLanguage.Where(l => l.PersonID == personID).ToList();
+
+            foreach (PersonLanguage personLang in allPersonLangList)
+            {
+                int languageID = personLang.LanguageID;
+                Language language = _peopleDbContext.GetLanguageList.Where(p => p.LanguageID == languageID).Single();
+                allMatchingLanguage.Add(language);
+            }
+
+            return allMatchingLanguage;
         }
 
         public List<Person> ReadAllPerson(int languageID)

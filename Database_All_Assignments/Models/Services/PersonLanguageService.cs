@@ -47,6 +47,10 @@ namespace Database_All_Assignments.Models.Services
             return _personLangRepo.ReadAllPerson(languageID); 
         }
 
+        public List<Language> FindAllLanguage(int personID)
+        {
+            return _personLangRepo.ReadAllLanguage(personID);
+        }
         public bool Remove(PersonLanguage personLang)
         {
             return _personLangRepo.Delete(personLang);

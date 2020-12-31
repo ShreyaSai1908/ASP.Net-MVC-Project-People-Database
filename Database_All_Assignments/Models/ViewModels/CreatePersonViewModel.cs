@@ -27,5 +27,7 @@ namespace Database_All_Assignments.Models.ViewModels
         public City City { get; set; }
 
         public List<Language> LanguageList { get; set; }
+
+        public List<int> ListLanguageID { get; set; }
     }
 }

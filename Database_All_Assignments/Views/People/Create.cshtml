@@ -22,5 +22,15 @@
     <input asp-for="Address" />
     <span class="text-danger" asp-validation-for="Address"></span>
     <br />
+    <div class="form-group">
+        <label asp-for="ListLanguageID" class="control-label">Languages</label>
+        <select asp-for="ListLanguageID" class="form-control">
+            @foreach (var item in Model.LanguageList)
+            {
+                <option value="@item.LanguageID">@item.LanguageName</option>
+            }
+        </select>
+        <span asp-validation-for="ListLanguageID" class="text-danger"></span>
+    </div>
     <input class="text-danger" type="submit" value="Create" />
 </form>

@@ -9,15 +9,21 @@ namespace Database_All_Assignments.Models.Services
 {
     public class PeopleService : IPeopleServices
     {
-        IPeopleRepo pr;
-        public PeopleService(IPeopleRepo peopleRepo)
+        private readonly IPeopleRepo pr;
+        private readonly IPersonLanguageService _personLangservice;
+        public PeopleService(IPeopleRepo peopleRepo, IPersonLanguageService personLangservice)
         {
             pr = peopleRepo;
+            _personLangservice = personLangservice;
         }
 
         public Person Add(CreatePersonViewModel modelData)
         {
             Person personAdded = pr.Create(modelData.FirstName, modelData.LastName, modelData.PhoneNumber, modelData.Address);
+            foreach (int languageID in modelData.ListLanguageID)
+            {
+                _personLangservice.Add(personAdded.PersonID, languageID);
+            }
             return personAdded;
         }
 

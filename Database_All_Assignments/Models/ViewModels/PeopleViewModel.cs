@@ -14,5 +14,6 @@ namespace Database_All_Assignments.Models.ViewModels
         public CreatePersonViewModel AddPerson { get; set; }
 
         public string ModelErr { get; set; }
+        
     }
 }
