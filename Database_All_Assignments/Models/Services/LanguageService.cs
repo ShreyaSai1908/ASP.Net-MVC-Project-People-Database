@@ -62,6 +62,11 @@ namespace Database_All_Assignments.Models.Services
 
         public bool Remove(int id)
         {
+            List <PersonLanguage> removePersonLang=_personLangService.All(id);
+            foreach (PersonLanguage personLang in removePersonLang)
+            {
+                _personLangRepo.Delete(personLang);
+            }
             return _languageRepo.Delete(FindBy(id));
         }
     }

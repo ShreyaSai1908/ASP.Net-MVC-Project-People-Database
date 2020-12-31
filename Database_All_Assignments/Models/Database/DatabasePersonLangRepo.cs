@@ -25,7 +25,13 @@ namespace Database_All_Assignments.Models.Database
 
         public bool Delete(PersonLanguage personLanguage)
         {
-            throw new NotImplementedException();
+            bool delete = true;
+            if (delete == true)
+            {
+                _peopleDbContext.PersonLanguage.Remove(personLanguage);
+                _peopleDbContext.SaveChanges();
+            }
+            return delete;
         }
 
         public List<PersonLanguage> Read()
@@ -33,19 +39,41 @@ namespace Database_All_Assignments.Models.Database
             throw new NotImplementedException();
         }
 
-        public PersonLanguage Read(int personLanguageID)
+        public List<PersonLanguage> ReadAll(int languageID)
+        {
+            return _peopleDbContext.PersonLanguage.Where(l => l.LanguageID == languageID).ToList();
+        }
+
+        public PersonLanguage Read(int personLangID)
+        {
+            return _peopleDbContext.PersonLanguage.Find(personLangID);
+        }
+
+        public List<Language> ReadAllLanguage(int personID)
         {
             throw new NotImplementedException();
         }
 
-        public List<PersonLanguage> ReadAllLanguage(int id)
+        public List<Person> ReadAllPerson(int languageID)
         {
-            throw new NotImplementedException();
+            List<Person> allMatchingPerson = new List<Person>();
+            
+            List<PersonLanguage> allPersonLangList= _peopleDbContext.PersonLanguage.Where(l => l.LanguageID == languageID).ToList();
+            foreach (PersonLanguage personLang in allPersonLangList)
+            {
+                int personID = personLang.PersonID;
+                Person person = _peopleDbContext.GetPeopleList.Where(p => p.PersonID == personID).Single();
+                allMatchingPerson.Add(person);
+            }
+            
+            return allMatchingPerson;
         }
 
         public PersonLanguage Update(PersonLanguage personLanguage)
         {
-            throw new NotImplementedException();
+            _peopleDbContext.Update(personLanguage);
+            _peopleDbContext.SaveChanges();
+            return personLanguage;
         }
     }
 }

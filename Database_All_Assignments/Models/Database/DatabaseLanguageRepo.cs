@@ -59,7 +59,7 @@ namespace Database_All_Assignments.Models.Database
         {
             _peopleDbContext.Update(language);
             _peopleDbContext.SaveChanges();
-            return (language);
+            return language;
         }
     }
 }

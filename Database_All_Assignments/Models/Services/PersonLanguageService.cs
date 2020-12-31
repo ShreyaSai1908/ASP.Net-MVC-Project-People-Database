@@ -27,24 +27,29 @@ namespace Database_All_Assignments.Models.Services
             throw new NotImplementedException();
         }
 
+        public List<PersonLanguage> All(int languageID)
+        {
+            return _personLangRepo.ReadAll(languageID);
+        }
+
         public PersonLanguage Edit(int id, CreateLanguageViewModel edit)
         {
-            throw new NotImplementedException();
+            return null;
+        }        
+
+        public PersonLanguage FindBy(int personLangID)
+        {
+            return _personLangRepo.Read(personLangID);
         }
 
-        public List<PersonLanguage> FindAllLanguage(int id)
+        public List<Person> FindAllPerson(int languageID)
         {
-            throw new NotImplementedException();
+            return _personLangRepo.ReadAllPerson(languageID); 
         }
 
-        public PersonLanguage FindBy(int id)
+        public bool Remove(PersonLanguage personLang)
         {
-            throw new NotImplementedException();
-        }
-
-        public bool Remove(int id)
-        {
-            throw new NotImplementedException();
+            return _personLangRepo.Delete(personLang);
         }
     }
 }

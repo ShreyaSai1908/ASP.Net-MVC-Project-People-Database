@@ -16,11 +16,13 @@ namespace Database_All_Assignments.Controllers
     {
         private readonly IPeopleServices _peopleService;
         private readonly ILanguageService _languageService;
+        private readonly IPersonLanguageService _personLangService;
 
-        public LanguageController(IPeopleServices peopleService, ILanguageService languageService)
+        public LanguageController(IPeopleServices peopleService, IPersonLanguageService personLangService, ILanguageService languageService)
         {
             _peopleService = peopleService;
             _languageService = languageService;
+            _personLangService = personLangService;
         }
 
 
@@ -36,9 +38,17 @@ namespace Database_All_Assignments.Controllers
         public ActionResult LanguageDetail(int id)
         {
             CreateLanguageViewModel clVM = new CreateLanguageViewModel();
+
             Language langDetails = _languageService.FindBy(id);
+            
             clVM.LanguageID = langDetails.LanguageID;
-            //clVM.PeopleList = langDetails.PeopleList;
+            clVM.LanguageName = langDetails.LanguageName;
+
+            List<Person> allPerson = new List<Person>();
+            allPerson = _personLangService.FindAllPerson(id);
+            
+            clVM.PeopleList = allPerson;
+            
             return View(clVM);
         }
 
@@ -61,7 +71,6 @@ namespace Database_All_Assignments.Controllers
             {
                 Language language = _languageService.Add(createLanguage);
 
-
                 if (language == null)
                 {
                     ModelState.AddModelError("msg", "Database Problem");
@@ -82,13 +91,8 @@ namespace Database_All_Assignments.Controllers
             CreateLanguageViewModel clVM = new CreateLanguageViewModel();
             Language editLanguage = _languageService.FindBy(id);
             clVM.LanguageName = editLanguage.LanguageName;
-            clVM.LanguageID= editLanguage.LanguageID;
-
-            List<Person> allPerson = new List<Person>();
-            //allPerson = _languageService.FindAllPerson(editLanguage.PersonLanguage.PersonLangID);
-            clVM.PeopleList = allPerson;
-
-            return View("Edit", clVM);
+            clVM.LanguageID= editLanguage.LanguageID;            
+            return View("EditLanguage", clVM);
         }
 
         // POST: LanguageController/Edit/5
@@ -103,8 +107,7 @@ namespace Database_All_Assignments.Controllers
         // GET: LanguageController/Delete/5
         public ActionResult Delete(int id)
         {
-            _languageService.Remove(id);
-
+            _languageService.Remove(id);            
             return RedirectToAction(nameof(ShowLanguage));
         }
 

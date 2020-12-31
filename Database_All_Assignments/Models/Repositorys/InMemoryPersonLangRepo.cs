@@ -27,7 +27,17 @@ namespace Database_All_Assignments.Models.Repositorys
             throw new NotImplementedException();
         }
 
-        public List<PersonLanguage> ReadAllLanguage(int id)
+        public List<PersonLanguage> ReadAll(int languageID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Language> ReadAllLanguage(int personID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Person> ReadAllPerson(int languageID)
         {
             throw new NotImplementedException();
         }
