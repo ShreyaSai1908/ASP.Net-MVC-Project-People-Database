@@ -54,7 +54,8 @@ function PostEditPersonForm(event, form) {
             FirstName: form.FirstName.value,
             LastName: form.LastName.value,
             PhoneNumber: form.PhoneNumber.value,
-            Address: form.Address.value
+            Address: form.Address.value,
+            ListLanguageID: $("#ListLanguageID option:selected").val()
         },
         function (data, status) {
             console.log("PersonEdit [Post] data:", data);

@@ -11,7 +11,7 @@ namespace Database_All_Assignments.Models.Services
         public PersonLanguage Add(int personID, int languageID);
         public List<PersonLanguage> All();
         public List<PersonLanguage> All(int languageID);
-        public PersonLanguage FindBy(int id);
+        public List<PersonLanguage> FindBy(int id);
         public PersonLanguage Edit(int id, CreateLanguageViewModel edit);
         public List<Person> FindAllPerson(int id);
         public List<Language> FindAllLanguage(int id);

@@ -22,7 +22,7 @@ namespace Database_All_Assignments.Models.Repositorys
             throw new NotImplementedException();
         }
 
-        public PersonLanguage Read(int personLanguageID)
+        public List<PersonLanguage> Read(int personID)
         {
             throw new NotImplementedException();
         }

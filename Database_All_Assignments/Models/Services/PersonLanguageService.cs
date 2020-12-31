@@ -37,9 +37,9 @@ namespace Database_All_Assignments.Models.Services
             return null;
         }        
 
-        public PersonLanguage FindBy(int personLangID)
+        public List<PersonLanguage> FindBy(int personID)
         {
-            return _personLangRepo.Read(personLangID);
+            return _personLangRepo.Read(personID);
         }
 
         public List<Person> FindAllPerson(int languageID)

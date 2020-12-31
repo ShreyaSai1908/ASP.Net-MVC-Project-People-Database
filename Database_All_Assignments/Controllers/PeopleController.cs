@@ -136,7 +136,7 @@ namespace Database_All_Assignments.Controllers
         public IActionResult EditPerson(int id)
         {
             Person editPerson = ps.FindBy(id);
-            editPerson.Languages = _personLangService.FindAllLanguage(id);
+            editPerson.Languages = _languageService.All();
 
             /*
             CreatePersonViewModel modelPerson = new CreatePersonViewModel();

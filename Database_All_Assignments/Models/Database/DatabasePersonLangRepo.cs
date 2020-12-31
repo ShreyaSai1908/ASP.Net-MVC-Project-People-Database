@@ -44,9 +44,9 @@ namespace Database_All_Assignments.Models.Database
             return _peopleDbContext.PersonLanguage.Where(l => l.LanguageID == languageID).ToList();
         }
 
-        public PersonLanguage Read(int personLangID)
+        public List<PersonLanguage> Read(int personID)
         {
-            return _peopleDbContext.PersonLanguage.Find(personLangID);
+            return _peopleDbContext.PersonLanguage.Where(p => p.PersonID == personID).ToList();
         }
 
         public List<Language> ReadAllLanguage(int personID)

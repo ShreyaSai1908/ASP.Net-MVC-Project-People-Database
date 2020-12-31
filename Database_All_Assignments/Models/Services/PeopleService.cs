@@ -84,12 +84,30 @@ namespace Database_All_Assignments.Models.Services
             person.PhoneNumber = editPerson.PhoneNumber;
             person.Address = editPerson.Address;
             pr.Update(person);
+
+            List <PersonLanguage> matchingPersonLangList = _personLangservice.FindBy(id);
+
+            foreach (PersonLanguage personLang in matchingPersonLangList)
+            {
+                _personLangservice.Remove(personLang);
+            }
+            foreach (int languageID in editPerson.ListLanguageID)
+            {
+                _personLangservice.Add(id, languageID);
+            }
             return person;
         }
         public bool Remove(int findID)
         {
             bool result = false;
             //InMemoryPeopleRepo pr = new InMemoryPeopleRepo();
+
+            List<PersonLanguage> matchingPersonLangList = _personLangservice.FindBy(findID);
+
+            foreach (PersonLanguage personLang in matchingPersonLangList)
+            {
+                _personLangservice.Remove(personLang);
+            }
 
             Person removePerson = pr.Read(findID);
             result = pr.Delete(removePerson);
