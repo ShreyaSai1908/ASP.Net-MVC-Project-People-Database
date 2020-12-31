@@ -15,9 +15,9 @@ namespace Database_All_Assignments.Models.Services
             _personLangRepo = personLangRepo;             
         }
 
-        public PersonLanguage Add(List<Person> peopleList, List<Language> langList)
+        public PersonLanguage Add(int personID, int languageID)
         {
-            PersonLanguage personLang = new PersonLanguage() { PersonList = peopleList, LanguageList = langList };
+            PersonLanguage personLang = new PersonLanguage() { PersonID = personID, LanguageID = languageID };
             _personLangRepo.Create(personLang);
             return personLang;
         }

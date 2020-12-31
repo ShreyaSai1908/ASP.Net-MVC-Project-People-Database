@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,9 +41,9 @@ namespace Database_All_Assignments.Models
             public string Address { get; set; }
 
             public City City { get; set; }
-
-            //public List<Language> LanguageList { get; set; }
-            //public Language language { get; set; }
+            
+            [NotMapped]
+            public virtual List<Language> Languages { get; set; }
     }
     
 }

@@ -50,6 +50,11 @@ namespace Database_All_Assignments.Models.Database
             return _peopleDbContext.GetLanguageList.Where(l => l.LanguageID == id).ToList();
         }
 
+        public List<Person> ReadAllPerson(int id)
+        {
+            return null;
+        }
+
         public Language Update(Language language)
         {
             _peopleDbContext.Update(language);

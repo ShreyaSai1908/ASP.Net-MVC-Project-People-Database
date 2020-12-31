@@ -10,8 +10,9 @@ namespace Database_All_Assignments.Models
     {
         [Key]
         public int PersonLangID { get; set; }
-        public List <Person> PersonList { get; set; }
-
-        public List <Language> LanguageList { get; set; }
+        public int PersonID { get; set; }
+        public int LanguageID { get; set; }
+        public virtual Person Person { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

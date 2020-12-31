@@ -25,20 +25,12 @@ namespace Database_All_Assignments.Models.Services
         public Language Add(CreateLanguageViewModel createLanguageViewModel)
         {
             Language language = _languageRepo.Create(createLanguageViewModel.LanguageName);
-
-            List<Language> langList = new List<Language>();
-            langList.Add(language);
-
-            List<Person> peopleList = new List<Person>();
-
+            
             foreach (int id in createLanguageViewModel.ListPersonID)
             {
-                Person person=_peopleRepo.Read(id);
-                peopleList.Add(person);
+                _personLangService.Add(id, language.LanguageID);
             }
-
-            _personLangService.Add(peopleList, langList);
-
+            
             return language;
         }
 
@@ -56,6 +48,11 @@ namespace Database_All_Assignments.Models.Services
         public List<Language> FindAllLanguage(int id)
         {
             return _languageRepo.ReadAllLanguage(id);
+        }
+
+        public List<Person> FindAllPerson(int id)
+        {
+            return _languageRepo.ReadAllPerson(id);
         }
 
         public Language FindBy(int id)

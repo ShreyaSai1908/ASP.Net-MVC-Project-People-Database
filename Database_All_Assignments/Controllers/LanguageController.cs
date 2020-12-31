@@ -85,7 +85,7 @@ namespace Database_All_Assignments.Controllers
             clVM.LanguageID= editLanguage.LanguageID;
 
             List<Person> allPerson = new List<Person>();
-            //allPerson = _peopleService.All();
+            //allPerson = _languageService.FindAllPerson(editLanguage.PersonLanguage.PersonLangID);
             clVM.PeopleList = allPerson;
 
             return View("Edit", clVM);

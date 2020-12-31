@@ -40,6 +40,11 @@ namespace Database_All_Assignments.Models.Repositorys
             throw new NotImplementedException();
         }
 
+        public List<Person> ReadAllPerson(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Language Update(Language language)
         {
             throw new NotImplementedException();

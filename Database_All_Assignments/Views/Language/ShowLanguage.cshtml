@@ -33,9 +33,9 @@
             
             
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "EditLanguage", new { id=item.LanguageID }) |
+                @Html.ActionLink("Details", "LanguageDetail", new { id=item.LanguageID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.LanguageID })
             </td>
         </tr>
     }

@@ -4,14 +4,16 @@ using Database_All_Assignments.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Database_All_Assignments.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    partial class PeopleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201231104631_CreatePersonLanguageTable_6")]
+    partial class CreatePersonLanguageTable_6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +73,12 @@ namespace Database_All_Assignments.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PersonLanguagePersonLangID")
+                        .HasColumnType("int");
+
                     b.HasKey("LanguageID");
+
+                    b.HasIndex("PersonLanguagePersonLangID");
 
                     b.ToTable("GetLanguageList");
                 });
@@ -101,6 +108,9 @@ namespace Database_All_Assignments.Migrations
                         .HasColumnType("nvarchar(80)")
                         .HasMaxLength(80);
 
+                    b.Property<int?>("PersonLanguagePersonLangID")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(10)")
@@ -109,6 +119,8 @@ namespace Database_All_Assignments.Migrations
                     b.HasKey("PersonID");
 
                     b.HasIndex("CityId");
+
+                    b.HasIndex("PersonLanguagePersonLangID");
 
                     b.ToTable("GetPeopleList");
                 });
@@ -120,17 +132,7 @@ namespace Database_All_Assignments.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("LanguageID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PersonID")
-                        .HasColumnType("int");
-
                     b.HasKey("PersonLangID");
-
-                    b.HasIndex("LanguageID");
-
-                    b.HasIndex("PersonID");
 
                     b.ToTable("PersonLanguage");
                 });
@@ -142,26 +144,22 @@ namespace Database_All_Assignments.Migrations
                         .HasForeignKey("CountryId");
                 });
 
+            modelBuilder.Entity("Database_All_Assignments.Models.Language", b =>
+                {
+                    b.HasOne("Database_All_Assignments.Models.PersonLanguage", "PersonLanguage")
+                        .WithMany("LanguageList")
+                        .HasForeignKey("PersonLanguagePersonLangID");
+                });
+
             modelBuilder.Entity("Database_All_Assignments.Models.Person", b =>
                 {
                     b.HasOne("Database_All_Assignments.Models.City", "City")
                         .WithMany("PersonInCity")
                         .HasForeignKey("CityId");
-                });
 
-            modelBuilder.Entity("Database_All_Assignments.Models.PersonLanguage", b =>
-                {
-                    b.HasOne("Database_All_Assignments.Models.Language", "Language")
-                        .WithMany()
-                        .HasForeignKey("LanguageID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Database_All_Assignments.Models.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Database_All_Assignments.Models.PersonLanguage", "PersonLanguage")
+                        .WithMany("PersonList")
+                        .HasForeignKey("PersonLanguagePersonLangID");
                 });
 #pragma warning restore 612, 618
         }
