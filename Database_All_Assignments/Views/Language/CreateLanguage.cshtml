@@ -19,9 +19,9 @@
                 <label asp-for="ListPersonID" class="control-label"></label>
                 <select asp-for="ListPersonID" class="form-control">
                     @foreach (var item in Model.PeopleList)
-                    {
+                     {
                         <option value="@item.PersonID">@item.FirstName @item.LastName</option>
-                    }
+                     }
                 </select>
                 <span asp-validation-for="ListPersonID" class="text-danger"></span>
             </div>

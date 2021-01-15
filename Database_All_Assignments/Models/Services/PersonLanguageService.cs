@@ -12,12 +12,14 @@ namespace Database_All_Assignments.Models.Services
         private readonly IPersonLangRepo _personLangRepo;
         public PersonLanguageService(IPersonLangRepo personLangRepo)
         {
-            _personLangRepo = personLangRepo;             
+            _personLangRepo = personLangRepo;           
         }
 
         public PersonLanguage Add(int personID, int languageID)
         {
-            PersonLanguage personLang = new PersonLanguage() { PersonID = personID, LanguageID = languageID };
+            Language l = null; // _languageService.FindBy(languageID);
+            Person p = null; //_peopleService.FindBy(personID);
+            PersonLanguage personLang = new PersonLanguage() { PersonID = personID, LanguageID = languageID, Person=p, Language = l };
             _personLangRepo.Create(personLang);
             return personLang;
         }

@@ -4,14 +4,16 @@ using Database_All_Assignments.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Database_All_Assignments.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    partial class PeopleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210113134220_CreatePersonLanguageTable_13")]
+    partial class CreatePersonLanguageTable_13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,20 +117,16 @@ namespace Database_All_Assignments.Migrations
 
             modelBuilder.Entity("Database_All_Assignments.Models.PersonLanguage", b =>
                 {
-                    b.Property<int>("PersonLangID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("LanguageID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PersonLangID")
                         .HasColumnType("int");
 
                     b.Property<int>("PersonID")
                         .HasColumnType("int");
 
-                    b.HasKey("PersonLangID");
-
-                    b.HasIndex("LanguageID");
+                    b.HasKey("LanguageID", "PersonLangID");
 
                     b.HasIndex("PersonID");
 

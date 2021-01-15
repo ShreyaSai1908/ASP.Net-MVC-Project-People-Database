@@ -10,9 +10,9 @@ namespace Database_All_Assignments.Models.Repositorys
     {
         private static List<Person> people = new List<Person>();
         private static int idCounter = 0;
-        public Person Create(string FirstName, string LastName, string PhoneNumber, string Address)
+        public Person Create(Person person)
         {
-            Person person = new Person();
+            /*Person person = new Person();
 
             idCounter++;
             person.PersonID = idCounter;
@@ -22,7 +22,7 @@ namespace Database_All_Assignments.Models.Repositorys
             person.PhoneNumber = PhoneNumber;
             person.Address = Address;
 
-            people.Add(person);
+            people.Add(person);*/
 
             return person;
         }

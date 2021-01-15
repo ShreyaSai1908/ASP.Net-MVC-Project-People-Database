@@ -4,14 +4,16 @@ using Database_All_Assignments.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Database_All_Assignments.Migrations
 {
     [DbContext(typeof(PeopleDbContext))]
-    partial class PeopleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210113142155_CreatePersonLanguageTable_22")]
+    partial class CreatePersonLanguageTable_22
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,13 +154,13 @@ namespace Database_All_Assignments.Migrations
             modelBuilder.Entity("Database_All_Assignments.Models.PersonLanguage", b =>
                 {
                     b.HasOne("Database_All_Assignments.Models.Language", "Language")
-                        .WithMany("PL")
+                        .WithMany()
                         .HasForeignKey("LanguageID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Database_All_Assignments.Models.Person", "Person")
-                        .WithMany("PersonLanguages")
+                        .WithMany()
                         .HasForeignKey("PersonID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

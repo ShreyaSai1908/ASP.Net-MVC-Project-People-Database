@@ -7,7 +7,7 @@ namespace Database_All_Assignments.Models.Repositorys
 {
     public interface ILanguageRepo
     {
-        public Language Create(string LanguageName);
+        public Language Create(Language lang);
         public List<Language> Read();
         public Language Read(int languageID);
         public List<Language> ReadAllLanguage(int id);

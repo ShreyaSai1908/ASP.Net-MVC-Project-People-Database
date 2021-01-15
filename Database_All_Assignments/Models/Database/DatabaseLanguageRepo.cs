@@ -16,9 +16,10 @@ namespace Database_All_Assignments.Models.Database
             _peopleDbContext = peopleDbContext;
         }
 
-        public Language Create(string LanguageName)
+        public Language Create(Language lang)
         {
-            Language addingLanguage = new Language() { LanguageName = LanguageName };
+            //Language addingLanguage = new Language() { LanguageName = LanguageName };
+            Language addingLanguage = lang;
             _peopleDbContext.Add(addingLanguage);
             _peopleDbContext.SaveChanges();
             return addingLanguage;

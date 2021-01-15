@@ -15,9 +15,11 @@ namespace Database_All_Assignments.Models.Database
             _peopleDbContext = peopleDbContext;
         }
 
-        public Person Create(string FirstName, string LastName, string PhoneNumber, string Address)
+        public Person Create(Person person)
         {
-            Person addingPerson = new Person(FirstName, LastName, PhoneNumber, Address);
+            /*Person addingPerson = new Person(FirstName, LastName, PhoneNumber, Address);
+            addingPerson.PersonLanguages = allPerson;*/
+            Person addingPerson = person;
             _peopleDbContext.GetPeopleList.Add(addingPerson);
             _peopleDbContext.SaveChanges();
             return addingPerson;

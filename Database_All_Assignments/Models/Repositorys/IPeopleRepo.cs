@@ -7,7 +7,7 @@ namespace Database_All_Assignments.Models.Repositorys
 {
     public interface IPeopleRepo
     {
-        public Person Create(string FirstName, string LastName, string PhoneNumber, string Address);
+        public Person Create(Person person);
         public List<Person> Read();
         public Person Read(int id);
         public Person Update(Person person);

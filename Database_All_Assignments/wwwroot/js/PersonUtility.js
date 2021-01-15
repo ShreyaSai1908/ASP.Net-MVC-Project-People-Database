@@ -3,6 +3,8 @@ var editedPersonArea = null;
 
 function GetAddPersonForm(urlToCreateForm)
 {
+    console.log("GetAddPersonForm:", urlToCreateForm);
+
     btnAddPerson = $("#btnAddPerson");
 
     $.get(urlToCreateForm, function (result) {

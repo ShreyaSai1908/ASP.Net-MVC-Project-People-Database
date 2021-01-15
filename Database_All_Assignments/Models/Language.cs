@@ -17,5 +17,7 @@ namespace Database_All_Assignments.Models
         [NotMapped]
         public virtual List<Person> People { get; set; }
 
+        public List<PersonLanguage> PL { get; set; }
+
     }
 }

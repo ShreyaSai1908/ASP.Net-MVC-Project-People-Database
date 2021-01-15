@@ -47,6 +47,9 @@ namespace Database_All_Assignments.Models
 
             [NotMapped]
             public virtual List<int> ListLanguageID { get; set; }
+
+            public List<PersonLanguage> PersonLanguages { get; set; }//Many
+
     }
-    
+
 }

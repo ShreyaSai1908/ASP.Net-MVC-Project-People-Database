@@ -11,19 +11,46 @@ namespace Database_All_Assignments.Models.Services
     {
         private readonly IPeopleRepo pr;
         private readonly IPersonLanguageService _personLangservice;
-        public PeopleService(IPeopleRepo peopleRepo, IPersonLanguageService personLangservice)
+        private readonly ILanguageService _langService;
+        public PeopleService(IPeopleRepo peopleRepo, IPersonLanguageService personLangservice, ILanguageService langService)
         {
             pr = peopleRepo;
             _personLangservice = personLangservice;
+            _langService = langService;
         }
 
         public Person Add(CreatePersonViewModel modelData)
         {
-            Person personAdded = pr.Create(modelData.FirstName, modelData.LastName, modelData.PhoneNumber, modelData.Address);
+            Person newPerson = new Person(); //new person to be added
+            newPerson.FirstName = modelData.FirstName;
+            newPerson.LastName = modelData.LastName;
+            newPerson.PhoneNumber = modelData.PhoneNumber;
+            newPerson.Address = modelData.Address;
+
+
+            List<PersonLanguage> allPersonLang = new List<PersonLanguage>(); //placeholder list
             foreach (int languageID in modelData.ListLanguageID)
             {
-                _personLangservice.Add(personAdded.PersonID, languageID);
+                PersonLanguage personLang = new PersonLanguage();
+
+                personLang.Language = _langService.FindBy(languageID);
+                personLang.LanguageID = languageID; //createLanguageViewModel.LanguageID;
+
+                personLang.Person = newPerson;                
+                personLang.PersonID = newPerson.PersonID;
+
+                allPersonLang.Add(personLang);                
+                //_personLangService.Add(id, language.LanguageID);
             }
+            newPerson.PersonLanguages = allPersonLang;
+
+            Person personAdded = pr.Create(newPerson);
+
+            /* Person personAdded = pr.Create(modelData.FirstName, modelData.LastName, modelData.PhoneNumber, modelData.Address);
+             foreach (int languageID in modelData.ListLanguageID)
+             {
+                 _personLangservice.Add(personAdded.PersonID, languageID);
+             }*/
             return personAdded;
         }
 
@@ -102,12 +129,12 @@ namespace Database_All_Assignments.Models.Services
             bool result = false;
             //InMemoryPeopleRepo pr = new InMemoryPeopleRepo();
 
-            List<PersonLanguage> matchingPersonLangList = _personLangservice.FindBy(findID);
+            /*List<PersonLanguage> matchingPersonLangList = _personLangservice.FindBy(findID);
 
             foreach (PersonLanguage personLang in matchingPersonLangList)
             {
                 _personLangservice.Remove(personLang);
-            }
+            }*/
 
             Person removePerson = pr.Read(findID);
             result = pr.Delete(removePerson);

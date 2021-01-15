@@ -8,16 +8,17 @@ namespace Database_All_Assignments.Models.Repositorys
     public class InMemoryLanguageRepo : ILanguageRepo
     {
         private static List<Language> newLanguage = new List<Language>();
-        private static int idCounter = 0;
+        //private static int idCounter = 0;
 
-        public Language Create(string LanguageName)
+        public Language Create(Language lang)
         {
-            Language language = new Language();
+           /* Language language = new Language();
             idCounter++;
             language.LanguageID = idCounter;
             language.LanguageName = LanguageName;
-            //language.PeopleList = LanguageOfPerson;
-            return language;
+            //language.PeopleList = LanguageOfPerson;*/
+
+            return lang;
         }
 
         public bool Delete(Language language)
