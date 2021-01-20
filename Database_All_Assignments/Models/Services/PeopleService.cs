@@ -11,12 +11,12 @@ namespace Database_All_Assignments.Models.Services
     {
         private readonly IPeopleRepo pr;
         private readonly IPersonLanguageService _personLangservice;
-        private readonly ILanguageService _langService;
-        public PeopleService(IPeopleRepo peopleRepo, IPersonLanguageService personLangservice, ILanguageService langService)
+        //private readonly ILanguageService _langService;
+        public PeopleService(IPeopleRepo peopleRepo, IPersonLanguageService personLangservice) //, ILanguageService langService)
         {
-            pr = peopleRepo;
+             pr = peopleRepo;
             _personLangservice = personLangservice;
-            _langService = langService;
+           // _langService = langService;
         }
 
         public Person Add(CreatePersonViewModel modelData)
@@ -33,10 +33,10 @@ namespace Database_All_Assignments.Models.Services
             {
                 PersonLanguage personLang = new PersonLanguage();
 
-                personLang.Language = _langService.FindBy(languageID);
+                //personLang.Language = _langService.FindBy(languageID);
                 personLang.LanguageID = languageID; //createLanguageViewModel.LanguageID;
 
-                personLang.Person = newPerson;                
+                //personLang.Person = newPerson;                
                 personLang.PersonID = newPerson.PersonID;
 
                 allPersonLang.Add(personLang);                

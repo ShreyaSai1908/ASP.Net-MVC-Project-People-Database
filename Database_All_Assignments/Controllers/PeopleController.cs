@@ -100,10 +100,10 @@ namespace Database_All_Assignments.Controllers
             Person person = new Person();
 
             //to be replaced by user input
-            person.FirstName = "EditFName";
+            /*person.FirstName = "EditFName";
             person.LastName = "EditLName";
             person.PhoneNumber = "123456789";
-            person.Address = "EditAddress";
+            person.Address = "EditAddress";*/
 
             ps.Edit(id, person);
             peopleViewModel = ps.All();

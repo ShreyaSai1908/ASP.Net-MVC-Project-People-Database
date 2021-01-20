@@ -9,7 +9,7 @@ namespace Database_All_Assignments.Models.Repositorys
     public class InMemoryPeopleRepo : IPeopleRepo
     {
         private static List<Person> people = new List<Person>();
-        private static int idCounter = 0;
+        //private static int idCounter = 0;
         public Person Create(Person person)
         {
             /*Person person = new Person();
