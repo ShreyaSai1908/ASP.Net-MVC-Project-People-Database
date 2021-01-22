@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Database_All_Assignments.Migrations
 {
-    [DbContext(typeof(PeopleDbContext))]
+    [DbContext(typeof(IdentityContentDbContext))]
     [Migration("20210113135808_CreatePersonLanguageTable_14")]
     partial class CreatePersonLanguageTable_14
     {

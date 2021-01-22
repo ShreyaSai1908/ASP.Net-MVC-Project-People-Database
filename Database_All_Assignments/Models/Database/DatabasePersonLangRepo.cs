@@ -8,9 +8,9 @@ namespace Database_All_Assignments.Models.Database
 {
     public class DatabasePersonLangRepo : IPersonLangRepo
     {
-        private readonly PeopleDbContext _peopleDbContext;
+        private readonly IdentityContentDbContext _peopleDbContext;
 
-        public DatabasePersonLangRepo(PeopleDbContext peopleDbContext)
+        public DatabasePersonLangRepo(IdentityContentDbContext peopleDbContext)
         {
             _peopleDbContext = peopleDbContext;
         }

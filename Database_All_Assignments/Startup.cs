@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Database_All_Assignments.Models.Database;
+using Database_All_Assignments.Models.Database.Identity;
 using Database_All_Assignments.Models.Repositorys;
 using Database_All_Assignments.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +29,11 @@ namespace Database_All_Assignments
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PeopleDbContext>(options =>
+            services.AddIdentity<ContentUser, IdentityRole>()
+            .AddEntityFrameworkStores<IdentityContentDbContext>()
+            .AddDefaultTokenProviders();
+
+            services.AddDbContext<IdentityContentDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             /*People Service*/
@@ -75,8 +81,8 @@ namespace Database_All_Assignments
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseAuthentication(); //User login??
+            app.UseAuthorization(); //User role??
 
             app.UseEndpoints(endpoints =>
             {

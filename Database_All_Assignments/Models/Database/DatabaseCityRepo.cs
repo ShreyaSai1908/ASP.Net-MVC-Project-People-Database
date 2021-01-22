@@ -8,9 +8,9 @@ namespace Database_All_Assignments.Models.Database
 {
     public class DatabaseCityRepo : ICityRepo
     {
-        private readonly PeopleDbContext _peopleDbContext;
+        private readonly IdentityContentDbContext _peopleDbContext;
 
-        public DatabaseCityRepo(PeopleDbContext peopleDbContext)
+        public DatabaseCityRepo(IdentityContentDbContext peopleDbContext)
         {
             _peopleDbContext = peopleDbContext;
         }

@@ -9,9 +9,9 @@ namespace Database_All_Assignments.Models.Database
 {
     public class DatabaseLanguageRepo : ILanguageRepo
     {
-        private readonly PeopleDbContext _peopleDbContext;
+        private readonly IdentityContentDbContext _peopleDbContext;
 
-        public DatabaseLanguageRepo(PeopleDbContext peopleDbContext)
+        public DatabaseLanguageRepo(IdentityContentDbContext peopleDbContext)
         {
             _peopleDbContext = peopleDbContext;
         }
