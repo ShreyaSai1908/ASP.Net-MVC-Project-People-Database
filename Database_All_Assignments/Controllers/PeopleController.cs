@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Database_All_Assignments.Models;
 using Database_All_Assignments.Models.ViewModels;
 using Database_All_Assignments.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Database_All_Assignments.Controllers
 {

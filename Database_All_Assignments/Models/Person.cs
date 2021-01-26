@@ -49,7 +49,6 @@ namespace Database_All_Assignments.Models
             public virtual List<int> ListLanguageID { get; set; }
 
             public List<PersonLanguage> PersonLanguages { get; set; }//Many
-
     }
 
 }

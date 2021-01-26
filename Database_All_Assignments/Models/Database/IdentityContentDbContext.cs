@@ -1,4 +1,4 @@
-﻿using Database_All_Assignments.Models.Database.Identity;
+﻿using Database_All_Assignments.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +10,7 @@ namespace Database_All_Assignments.Models.Database
 {
     public class IdentityContentDbContext : IdentityDbContext<ContentUser>
     {
-      public IdentityContentDbContext  (DbContextOptions<IdentityContentDbContext> options) : base(options){}
+        public IdentityContentDbContext  (DbContextOptions<IdentityContentDbContext> options) : base(options){}
 
         //DbSet
         public DbSet<Person> GetPeopleList { get; set; }

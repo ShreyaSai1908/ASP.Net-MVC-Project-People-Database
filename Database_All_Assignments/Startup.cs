@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Database_All_Assignments.Models.Database;
-using Database_All_Assignments.Models.Database.Identity;
+using Database_All_Assignments.Models.Identity;
 using Database_All_Assignments.Models.Repositorys;
 using Database_All_Assignments.Models.Services;
 using Microsoft.AspNetCore.Builder;

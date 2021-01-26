@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using Database_All_Assignments.Models;
 using Database_All_Assignments.Models.Services;
 using Database_All_Assignments.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Database_All_Assignments.Controllers
 {
+    [Authorize(Roles = "Admin")]
+
     public class CityController : Controller
     {
         private readonly ICityService _cityService;

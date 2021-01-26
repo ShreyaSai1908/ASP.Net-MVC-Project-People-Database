@@ -1,0 +1,22 @@
+﻿@model IdentityLoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+    @if(ViewBag.Msg!= null)
+
+     {
+        <h3 style="color: red">@ViewBag.Msg</h3>
+     }
+
+<form asp-action="Login" method="post">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName" />
+    <span class="text-danger" asp-validation-for="UserName"></span>
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+
+    <input type="submit" value="login" class="btn btn-primary" />
+</form>

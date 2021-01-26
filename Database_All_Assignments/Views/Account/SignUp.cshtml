@@ -1,0 +1,42 @@
+﻿@model IdentityCreateViewModel
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h1>SignUp</h1>
+    @if(ViewBag.Msg!= null)
+     {
+       <h3 style="color: red">@ViewBag.Msg</h3>
+     }
+
+<form asp-action="SignUp" method="post">
+    <label asp-for="UserName"></label>
+    <input asp-for="UserName" />
+    <span class="text-danger" asp-validation-for="UserName"></span>
+    <br />    
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" />
+    <span class="text-danger" asp-validation-for="FirstName"></span>
+    <br />
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
+    <br />
+    <label asp-for="BirthDate"></label>
+    <input asp-for="BirthDate" />
+    <span class="text-danger" asp-validation-for="BirthDate"></span>
+    <br />
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <span class="text-danger" asp-validation-for="Password"></span>
+    <br />
+    <label asp-for="ControlPassword"></label>
+    <input asp-for="ControlPassword" />
+    <span class="text-danger" asp-validation-for="ControlPassword"></span>
+    <br />
+    @*<input type="text" name="firstName" value="" />
+        <input type="text" name="lastName" value="" />
+        <input type="text" name="birthDate" value="" />*@
+
+    <input type="submit" value="Sign Up" class="btn btn-primary" />
+</form>

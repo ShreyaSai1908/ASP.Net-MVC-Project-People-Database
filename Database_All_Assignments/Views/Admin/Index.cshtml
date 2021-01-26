@@ -1,0 +1,34 @@
+﻿@model List<ContentUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Admin Users</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Actions</th>
+            <th>Access Failed</th>
+            @*<th>FirstName</th>
+                <th>LastName</th>
+                <th>BirthDate</th>*@
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (ContentUser item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.AccessFailedCount</td>
+                <td>
+                    @Html.ActionLink("Add to Admin", "AddAdmin", "Admin", new { id = item.Id })
+                    @Html.ActionLink("Remove from Admin", "RemoveAdmin", "Admin", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
